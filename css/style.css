@@ -1,24 +1,13 @@
-/* Custom Stylesheet */
-/**
- * Use this file to override Materialize files so you can update
- * the core Materialize files in the future
- *
- * Made By MaterializeCSS.com
- */
-
-/* body {
-  display: flex;
-  min-height: 100dvh;
-  flex-direction: column;
+/* color */
+:root{
+  --primary: #e1f5fe;
+  --secondary: #b3e5fc;
+  --title: #81d4fa;
+  
 }
 
-main {
-  flex: 1 0 auto;
-} */
 
 body {
-  /* display: flex; */
-  /* flex-direction: column; */
   min-height: 100vh;
   margin: 0;
   overflow: scroll;
@@ -33,7 +22,69 @@ body {
 
 .page-footer {
     position: absolute;
+    bottom: 0;
     color: #fff;
     width: 100%;
   
 }
+
+  /* layout styles */
+  nav{
+    background: var(--primary) !important;
+    border-bottom: 10px solid var(--secondary);
+  }
+  nav .container a{
+    text-transform: uppercase;
+    color: var(--title);
+  }
+  nav a span{
+    font-weight: bold;
+    color: var(--title);
+  }
+  nav .sidenav-trigger{
+    margin: 0;
+    cursor: pointer;
+  }
+
+  .page-footer {
+    background: var(--title);
+  }
+
+   /* Card styles */
+
+   .card{
+    margin-top: 20px;
+  }
+  
+  .card-panel.recipe{
+    border-radius: 8px;
+    padding: 10px;
+    box-shadow: 0px 1px 3px rgba(90,90,90,0.1);
+    display: grid;
+    grid-template-columns: 2fr 6fr 1fr;
+    grid-template-areas: "image details delete";
+    position: relative;
+  }
+  .card > img{
+    grid-area: image;
+    max-width: 60px;
+  }
+  .card-details{
+    grid-area: details;
+    margin-top: 6px;
+  }
+  .card-delete{
+    grid-area: delete;
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+  }
+  .card-delete i{
+    font-size: 18px;
+  }
+  .card-title{
+    font-weight: bold;
+  }
+  .card-ingredients{
+    font-size: 0.8em;
+  }
