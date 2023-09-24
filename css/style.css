@@ -56,35 +56,35 @@ body {
     margin-top: 20px;
   }
   
-  .card-panel.recipe{
+  .card-panel.card{
     border-radius: 8px;
     padding: 10px;
     box-shadow: 0px 1px 3px rgba(90,90,90,0.1);
     display: grid;
     grid-template-columns: 2fr 6fr 1fr;
-    grid-template-areas: "image details delete";
+    grid-template-areas: "image details goto";
     position: relative;
   }
   .card > img{
     grid-area: image;
-    max-width: 60px;
+    max-width: 50px;
   }
   .card-details{
     grid-area: details;
     margin-top: 6px;
   }
-  .card-delete{
-    grid-area: delete;
+  .card-goto{
+    grid-area: goto;
     position: absolute;
     bottom: 0px;
     right: 0px;
   }
-  .card-delete i{
+  .card-goto i{
     font-size: 18px;
   }
   .card-title{
     font-weight: bold;
   }
-  .card-ingredients{
+  .card-description{
     font-size: 0.8em;
   }
