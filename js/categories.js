@@ -1,18 +1,20 @@
 
-const categoryCard = document.querySelector('.items')
+const categoryCard = document.querySelector('.categorie_items')
 
 // render category //
 
 const renderCategory = (data, id) => {
     const html = `
-     <div class="card-panel card white row" data-id="${id}">
-       <img src="/img/link.png" alt="category thumb">
-          <div class="card-title">${data.title}</div>
-       <div class="card-goto">
-        <i class="material-icons">chevron_right</i>
-       </div>
-     </div>
-     `
+    <div class="card-panel categories_card white row" data-id="${id}"}>
+    <img src="/img/link.png" alt="recipe thumb">
+
+      <div class="categories-title">${data.title}</div>
+
+    <div class="goto_categorie">
+      <i class="material-icons">chevron_right</i>
+    </div>
+   </div>
+ `
 
   categoryCard.innerHTML += html
 

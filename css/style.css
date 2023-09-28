@@ -51,40 +51,44 @@ body {
   }
 
    /* Card styles */
-
-   .card{
-    margin-top: 20px;
+   .icon-block {
+    padding: 0 15px;
   }
   
-  .card-panel.card{
+  .icon-block .material-icons {
+    font-size: inherit;
+  }
+  
+  .categories_card {
+    position: relative;
     border-radius: 8px;
     padding: 10px;
-    box-shadow: 0px 1px 3px rgba(90,90,90,0.1);
-    display: grid;
-    grid-template-columns: 2fr 6fr 1fr;
-    grid-template-areas: "image details goto";
-    position: relative;
+    box-shadow: 0px 1px 3px rgba(90, 90, 90, 0.1);
+    display: flex;
+    align-items: center;
   }
-  .card > img{
+  
+  .categories_card>img {
     grid-area: image;
-    max-width: 50px;
+    max-width: 40px;
   }
-  .card-details{
-    grid-area: details;
-    margin-top: 6px;
+  
+  .categories-title {
+    margin-left: 12px;
+    font-weight: 600;
+    text-wrap: wrap;
+    font-size: medium;
   }
-  .card-goto{
-    grid-area: goto;
+  
+  .goto_categorie {
     position: absolute;
-    bottom: 0px;
-    right: 0px;
+    right: 0;
+    margin-right: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  .card-goto i{
-    font-size: 18px;
-  }
-  .card-title{
-    font-weight: bold;
-  }
-  .card-description{
-    font-size: 0.8em;
-  }
+  
+  
+
+  
