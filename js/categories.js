@@ -25,6 +25,10 @@ const renderCategory = (data, id) => {
 // getting event //
 
 categoryCard.addEventListener('click', (event) => {
+  if(event.target.tagName === 'DIV' || event.target.tagName === "IMG" || event.target.tagName === "I" ) {
+    const itemId = event.target.getAttribute("data-id")
+    window.location.href = `bookmarks.html?itemId=${itemId}`;
+ }
   const itemId = event.target.getAttribute("data-id")
   console.log(itemId, event) 
 })
