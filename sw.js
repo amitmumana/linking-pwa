@@ -1,6 +1,6 @@
 
-const staticCache = "static-site-v3"
-const dynamicCache = "dynamic-site-v3"
+const staticCache = "static-site-v28"
+const dynamicCache = "dynamic-site-v28"
 
 const resources = [
     '/',
@@ -8,16 +8,13 @@ const resources = [
     "css/materialize.min.css",
     "css/style.css",
     "js/materialize.min.js",
-    // "js/categories.js",
     "js/db.js",
     "img/icons",
     "pages/about.html",
-    // "pages/contact.html",
-    // "pages/bookmarks.html",
-    // 'pages/categories.html',
     "js/init.js",
     "img/link.png",
     "https://fonts.gstatic.com/s/materialicons/v140/flUhRq6tzZclQEJ-Vdg-IuiaDsNc.woff2",
+    "https://fonts.googleapis.com/icon?family=Material+Icons",
     "pages/fallback.html"
 
 ]
@@ -53,20 +50,22 @@ self.addEventListener('activate', (event) => {
 })
 
 self.addEventListener("fetch", (event) => {
-     event.respondWith(
-        caches.match(event.request).then((res) => {
-            return ( res || fetch(event.request).then((fetchResponse) => {
-                return caches.open(dynamicCache).then((cache) => {
-                    cache.put(event.request.url, fetchResponse.clone())
-                    limitCacheSize(dynamicCaches , 15)
-                    return fetchResponse
-                })
-            }))
-        }).catch(() => {
-          // conditional fallbacks
-           if (event.request.url.indexOf(".html") > -1) {
-            return caches.match("/pages/fallback.html")
-         }
-       })
-     )
+  if(event.request.url.indexOf("firestore.googleapis.com") === -1) {
+    event.respondWith(
+      caches.match(event.request).then((res) => {
+        return ( res || fetch(event.request).then((fetchResponse) => {
+          return caches.open(dynamicCache).then((cache) => {
+            cache.put(event.request.url, fetchResponse.clone())
+            limitCacheSize(dynamicCaches , 15)
+            return fetchResponse
+          })
+        }))
+      }).catch(() => {
+        // conditional fallbacks
+        if (event.request.url.indexOf(".html") > -1) {
+          return caches.match("/pages/fallback.html")
+        }
+      })
+      )
+    }
   })

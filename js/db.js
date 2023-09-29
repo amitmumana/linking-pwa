@@ -1,12 +1,6 @@
 
 const firebaseConfig = {
-  apiKey: "AIzaSyD9nUcGzYmBOAz3iFGvLX5uCZ18XAJ77go",
-  authDomain: "linkage-pwa.firebaseapp.com",
-  projectId: "linkage-pwa",
-  storageBucket: "linkage-pwa.appspot.com",
-  messagingSenderId: "794135458633",
-  appId: "1:794135458633:web:85e07d8e655cd7cc732098",
-  measurementId: "G-E59NSHHY98"
+ 
   };
 
   const firebaseApp = firebase.initializeApp(firebaseConfig);
@@ -29,7 +23,6 @@ const firebaseConfig = {
   }
 })
 
-
   //  Get Category //
 
 var category = db.collection('linkage')
@@ -42,28 +35,33 @@ category.onSnapshot((item) => {
   })
 })
 
+ // Add bokkmarks //
 
-// Get Bookmarks // 
-var bookmark = db.collection('linkage').doc(itemId).collection("bookmarks");
+ const form = document.querySelector('form')
 
-if (itemId !== null) {
-  bookmark.onSnapshot((item) => {
-    item.docChanges().forEach((element) => {
-      if (element.type === 'added') {
-        renderBookmarks(element.doc.data(), element.doc.id) 
-        console.log(element.doc.data(), "okokokokokokoko")
-      }
+ form.addEventListener('submit', (event) =>{
+    event.preventDefault()
+
+    const items = {
+       title : form.title?.value,
+       bookmark : form.url_title?.value
+    } 
+   
+    db.collection('linkage').add(items).catch((err) => {
+      console.log(err,  "error while add doc")
     })
-  })
-}
+
+ })
 
 
+ // deleting item //
 
-// bookmark.onSnapshot((item) => {
-//     item.docChanges().forEach((element) => {
-//       if (element.type === 'added' && itemId === null ) {
-//         // renderBookmarks(element.doc.data(), element.doc.id) 
-//         console.log(element.doc.data(), "okokokokokokoko")
-//       }
-//     })
-//   })
+// const container = document.querySelector(".items")
+
+// container.addEventListener("click", (event) => {
+//   if (event.target.tagName === "I") {
+//     const id = event.target.getAttribute("data-id")
+
+//     db.collection("menu").doc(id).delete()
+//   }
+// })

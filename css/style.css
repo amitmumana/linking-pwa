@@ -1,4 +1,4 @@
-/* color */
+
 :root{
   --primary: #e1f5fe;
   --secondary: #b3e5fc;
@@ -6,11 +6,21 @@
   
 }
 
-
-body {
-  min-height: 100vh;
+/* body {
+  min-height: 100dvh;
   margin: 0;
   overflow: scroll;
+} */
+
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
 }
 
 .icon-block {
@@ -18,14 +28,6 @@ body {
 }
 .icon-block .material-icons {
 	font-size: inherit;
-}
-
-.page-footer {
-    position: absolute;
-    bottom: 0;
-    color: #fff;
-    width: 100%;
-  
 }
 
   /* layout styles */
@@ -48,6 +50,7 @@ body {
 
   .page-footer {
     background: var(--title);
+    width: 100%;
   }
 
    /* Card styles */
